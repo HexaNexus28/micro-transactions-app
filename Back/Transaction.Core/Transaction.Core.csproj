@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Transaction.Data\Transaction.Data.csproj" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="Mapping\" />
+    <Folder Include="Configuration\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="15.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
   </ItemGroup>
 
 </Project>

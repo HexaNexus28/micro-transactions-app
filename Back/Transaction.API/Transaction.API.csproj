@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Transaction.Business\Transaction.Business.csproj" />
     <ProjectReference Include="..\Transaction.Core\Transaction.Core.csproj" />
+    <ProjectReference Include="..\Transaction.Data\Transaction.Data.csproj" />
   </ItemGroup>
 
 </Project>

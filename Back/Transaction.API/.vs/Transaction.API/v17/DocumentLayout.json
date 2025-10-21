@@ -3,6 +3,38 @@
   "WorkspaceRootPath": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{49E7A416-D59C-4CBD-BDCF-F6B2F8A0F00E}|..\\Transaction.Data\\Transaction.Data.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.data\\context\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\entities\\transact.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\entities\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\entities\\authtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\configuration\\automapperconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\interfaces\\repositories\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CCAF0358-CBF4-45D6-A53F-58813B0AD80E}|..\\Transaction.Core\\Transaction.Core.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.core\\interfaces\\repositories\\iunitofwork.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1FA201A-C93B-434F-AAD6-A6030921083B}|Transaction.API.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C1FA201A-C93B-434F-AAD6-A6030921083B}|Transaction.API.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C1FA201A-C93B-434F-AAD6-A6030921083B}|Transaction.API.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C1FA201A-C93B-434F-AAD6-A6030921083B}|Transaction.API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C1FA201A-C93B-434F-AAD6-A6030921083B}|Transaction.API.csproj|c:\\users\\peter\\onedrive - groupe esiea\\s4\\tp\\micro-transaction-app\\back\\transaction.api\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C1FA201A-C93B-434F-AAD6-A6030921083B}|Transaction.API.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -26,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 974,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -41,12 +73,8 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{269a02dc-6af8-11d3-bdc4-00c04f688e50}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 14,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Business\\Class1.cs",
               "RelativeDocumentMoniker": "..\\Transaction.Business\\Class1.cs",
@@ -59,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 13,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Class1.cs",
               "RelativeDocumentMoniker": "..\\Transaction.Core\\Class1.cs",
@@ -72,7 +100,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 12,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Data\\Class1.cs",
               "RelativeDocumentMoniker": "..\\Transaction.Data\\Class1.cs",
@@ -85,7 +113,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "UnitTest1.cs",
               "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Test\\UnitTest1.cs",
               "RelativeDocumentMoniker": "..\\Transaction.Test\\UnitTest1.cs",
@@ -98,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.API\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
@@ -107,6 +135,136 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-07T09:02:50.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T09:10:25.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.API\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.API\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-21T09:10:37.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\User.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Entities\\User.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\User.cs*",
+              "RelativeToolTip": "..\\Transaction.Core\\Entities\\User.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwCEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T09:21:03.603Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthToken.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\AuthToken.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Entities\\AuthToken.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\AuthToken.cs",
+              "RelativeToolTip": "..\\Transaction.Core\\Entities\\AuthToken.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwB0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T09:21:18.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Data\\Context\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Data\\Context\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Data\\Context\\AppDbContext.cs",
+              "RelativeToolTip": "..\\Transaction.Data\\Context\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAH4AAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T12:45:51.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\Item.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Entities\\Item.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\Item.cs*",
+              "RelativeToolTip": "..\\Transaction.Core\\Entities\\Item.cs*",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAsAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T09:22:17.08Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Transact.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\Transact.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Entities\\Transact.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Entities\\Transact.cs*",
+              "RelativeToolTip": "..\\Transaction.Core\\Entities\\Transact.cs*",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwBoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T09:22:33.171Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Interfaces\\Repositories\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Interfaces\\Repositories\\IGenericRepository.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Interfaces\\Repositories\\IGenericRepository.cs",
+              "RelativeToolTip": "..\\Transaction.Core\\Interfaces\\Repositories\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T13:23:56.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUnitOfWork.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Interfaces\\Repositories\\IUnitOfWork.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Interfaces\\Repositories\\IUnitOfWork.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Interfaces\\Repositories\\IUnitOfWork.cs",
+              "RelativeToolTip": "..\\Transaction.Core\\Interfaces\\Repositories\\IUnitOfWork.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T13:38:42.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AutoMapperConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Configuration\\AutoMapperConfiguration.cs",
+              "RelativeDocumentMoniker": "..\\Transaction.Core\\Configuration\\AutoMapperConfiguration.cs",
+              "ToolTip": "C:\\Users\\peter\\OneDrive - Groupe ESIEA\\S4\\TP\\micro-transaction-app\\Back\\Transaction.Core\\Configuration\\AutoMapperConfiguration.cs",
+              "RelativeToolTip": "..\\Transaction.Core\\Configuration\\AutoMapperConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T13:53:31.723Z",
               "EditorCaption": ""
             }
           ]
