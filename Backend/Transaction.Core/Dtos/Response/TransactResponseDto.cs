@@ -11,5 +11,7 @@ namespace Transaction.Core.Dtos.Response
         public DateTime TransactionDate { get; set; } = DateTime.UtcNow;
 
         public List<ItemResponseDto> Items { get; set; } = [];
+
+
     }
 }

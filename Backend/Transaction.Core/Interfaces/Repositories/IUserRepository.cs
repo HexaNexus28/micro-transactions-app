@@ -7,7 +7,7 @@ using Transaction.Core.Entities;
 
 namespace Transaction.Core.Interfaces.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository : IGenericRepository<User>
     {
         Task <User> GetUserByIdAsync(int id);
         Task DeleteUserByIdAsync(int id);

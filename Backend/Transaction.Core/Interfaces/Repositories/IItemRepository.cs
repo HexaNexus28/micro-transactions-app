@@ -7,7 +7,7 @@ using Transaction.Core.Entities;
 
 namespace Transaction.Core.Interfaces.Repositories
 {
-    public  interface IItemRepository
+    public  interface IItemRepository : IGenericRepository<Item>
     {
         Task<Item> GetItemByIdAsync (int id);
         Task<Item> GetItemByNameAsync (string name);

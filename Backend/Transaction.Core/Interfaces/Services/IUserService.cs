@@ -10,18 +10,18 @@ namespace Transaction.Core.Interfaces.Services
 {
     public  interface IUserService
     {
-        Task<ApiResponse<UserResponseDto>> GetUserByIdAsync(int Id);
+        Task<ApiResponse<UserResponseDto>> GetUserByIdAsync(int id);
 
         Task<ApiResponse<IEnumerable<UserResponseDto>>> GetAllUsersAsync();
 
-        Task<ApiResponse<UserResponseDto>> GetUserWithAuthTokensAsync();
+        Task<ApiResponse<UserResponseDto>> GetUserWithAuthTokensAsync(int userId);
 
-        Task<ApiResponse<UserResponseDto>> GetUsersWithTransactionsAsync();
+        Task<ApiResponse<UserResponseDto>> GetUserWithTransactionsAsync(int userId);
 
         Task<ApiResponse<UserResponseDto>> GetUserByNameAsync(string Name);
 
         Task<ApiResponse<UserResponseDto>> GetUserByEmailAsync (string  Email);
 
-        Task<ApiResponse<bool>> UpdateUserAsync (UserResponseDto User);
+
     }
 }

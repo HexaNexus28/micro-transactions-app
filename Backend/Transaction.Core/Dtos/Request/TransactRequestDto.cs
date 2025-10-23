@@ -14,8 +14,6 @@ namespace Transaction.Core.Dtos.Request
         [DataType(DataType.DateTime)]
         public  DateTime TransactionDate { get; set; } = DateTime.UtcNow;
 
-
-        public int UserId { get; set; }
         public User User { get; set; } = null!;
         public IEnumerable<Item> Items { get; set; } = [];
       

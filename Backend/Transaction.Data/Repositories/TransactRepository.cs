@@ -40,7 +40,7 @@ namespace Transaction.Data.Repositories
             var transact = await _dbSet.FirstOrDefaultAsync(x => x.UserId == UserId);
             if (transact == null)
             {
-                throw new InvalidOperationException("Transaction introuvable pour la date spécifiée.");
+                throw new InvalidOperationException("Transaction introuvable pour l'utilisateur spécifiée.");
             }
             else
             {
