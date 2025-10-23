@@ -6,7 +6,16 @@ using System.Threading.Tasks;
 
 namespace Transaction.Core.Dtos.Response
 {
-    internal class AuthTokenResponseDto
+    public class AuthTokenResponseDto
     {
+        public DateTime EmissionDate { get; set; } = DateTime.UtcNow;
+
+        public DateTime ExpirationDate {  get; set; } 
+
+
+        public AuthTokenResponseDto (DateTime EmissionDate, DateTime ExpirationDate)
+        {
+            ExpirationDate = EmissionDate.AddHours(1);
+        }
     }
 }

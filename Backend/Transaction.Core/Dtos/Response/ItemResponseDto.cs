@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Transaction.Core.Dtos.Response
 {
-    public class ItemDto
+    public  class ItemResponseDto
     {
+        public string Name { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
 
+        public float Price { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Transaction.Core.Interfaces.Repositories
 {
     public interface IAuthTokenRepository : IGenericRepository<AuthToken>
     {
-        Task<AuthToken> CreateAuthTokenAsync(AuthToken authToken, int UserId);
+        Task<AuthToken> CreateAuthTokenAsync(int UserId, User user);
         Task<AuthToken> DeleteAuthTokenAsync(int  UserId);
     }
 }

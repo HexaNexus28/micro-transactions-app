@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transaction.Core.Entities;
 
 namespace Transaction.Core.Interfaces.Repositories
 {
-    internal interface IItemRepository
+    public  interface IItemRepository
     {
+        Task<Item> GetItemByIdAsync (int id);
+        Task<Item> GetItemByNameAsync (string name);
+       
     }
 }

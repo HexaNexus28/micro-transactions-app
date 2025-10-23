@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace Transaction.Core.Dtos.Response
 {
-    internal class UserResponseDto
+    public class UserResponseDto
     {
+        public string UserName { get; set; } = string.Empty;
+
+        public string Email {  get; set; } = string.Empty;
+
+        public List<AuthTokenResponseDto> AuthTokens { get; set; } = [];
+
+        public List<TransactResponseDto> Transactions { get; set; } = [];
     }
 }
