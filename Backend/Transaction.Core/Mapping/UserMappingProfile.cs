@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transaction.Core.Dtos.Request;
 using Transaction.Core.Dtos.Response;
 using Transaction.Core.Entities;
 
@@ -21,6 +22,10 @@ namespace Transaction.Core.Mapping
             CreateMap<UserResponseDto, User>()
                 .ForMember(dest => dest.Id, opt => opt.Ignore())
                 .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
+
+            CreateMap<RegisterRequestDto, User>()
+                .ForMember(dest => dest.PasswordHash, opt => opt.MapFrom(src => src.PasswordHash))
+                .ForMember(dest => dest.Id, opt => opt.Ignore());
 
 
         }

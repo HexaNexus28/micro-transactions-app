@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transaction.Core.Dtos.Request;
 using Transaction.Core.Dtos.Response;
 using Transaction.Core.DTOs.Response;
 
@@ -10,6 +11,7 @@ namespace Transaction.Core.Interfaces.Services
 {
     public  interface IUserService
     {
+        Task<ApiResponse<bool>> CreateUserAsync(RegisterRequestDto user);
         Task<ApiResponse<UserResponseDto>> GetUserByIdAsync(int id);
 
         Task<ApiResponse<IEnumerable<UserResponseDto>>> GetAllUsersAsync();
@@ -22,6 +24,6 @@ namespace Transaction.Core.Interfaces.Services
 
         Task<ApiResponse<UserResponseDto>> GetUserByEmailAsync (string  Email);
 
-
+       
     }
 }

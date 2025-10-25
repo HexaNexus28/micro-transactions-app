@@ -14,7 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-       b => b.MigrationsAssembly("UserManagement.API")));
+       b => b.MigrationsAssembly("Transaction.API")));
 
 // Injection des dépendances - Repositories
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
@@ -50,9 +50,10 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
     {
-        Title = "UserManagement API",
+        Title = "Transaction API",
         Version = "v1",
-        Description = "API pour la gestion des utilisateurs"
+        Description = "API pour la gestion des transactions"
+
     });
 });
 // Add services to the container.
@@ -80,6 +81,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseCors("DevelopmentPolicy");
 }
 
 app.UseHttpsRedirection();

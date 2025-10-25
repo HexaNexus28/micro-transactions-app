@@ -26,6 +26,34 @@ namespace Transaction.Business.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+       public async Task<ApiResponse<bool>> CreateUserAsync(RegisterRequestDto userdto)
+        {
+            try
+            {
+                if(userdto == null)  
+                    return ApiResponse<bool>.ErrorResponse(
+                        "Invalid user ID", 400);
+
+
+                var user = _mapper.Map<User>(userdto);
+                await _unitOfWork.Users.AddAsync(user);
+                await _unitOfWork.SaveChangesAsync();
+
+
+                return ApiResponse<bool>.SuccessResponse(
+                        true, $"user {user} created successfully");
+
+            }
+            catch (Exception ex)
+            {
+                
+                Console.WriteLine($"[CreateUserAsync ERROR] {ex.Message}\n{ex.StackTrace}");
+
+                return ApiResponse<bool>.ErrorResponse(
+                    $"An error occurred: {ex.Message}", 500);
+            }
+        }
+
         public async Task<ApiResponse<UserResponseDto>> GetUserByIdAsync(int Id)
         {
             try
