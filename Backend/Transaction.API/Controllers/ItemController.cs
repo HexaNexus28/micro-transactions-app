@@ -32,9 +32,9 @@ namespace Transaction.API.Controllers
 
         // GET api/<ItemController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetItemById(int userId)
+        public async Task<IActionResult> GetItemById(int id)
         {
-            var result = await _itemService.GetItemByIdAsync(userId);
+            var result = await _itemService.GetItemByIdAsync(id);
             if (result.Success)
             {
                 return Ok(result);

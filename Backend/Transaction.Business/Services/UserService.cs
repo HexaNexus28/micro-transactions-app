@@ -34,7 +34,11 @@ namespace Transaction.Business.Services
                     return ApiResponse<bool>.ErrorResponse(
                         "Invalid user ID", 400);
 
-
+                if (GetUserByEmailAsync(userdto.Email) != null)
+                {
+                    return ApiResponse<bool>.ErrorResponse(
+                                            "Email Already exist", 400);
+                }
                 var user = _mapper.Map<User>(userdto);
                 await _unitOfWork.Users.AddAsync(user);
                 await _unitOfWork.SaveChangesAsync();
@@ -63,6 +67,7 @@ namespace Transaction.Business.Services
                     return ApiResponse<UserResponseDto>.ErrorResponse(
                         "Invalid User ID", 400);
                 }
+
                 var user = await _unitOfWork.Users.GetByIdAsync(Id);
 
                 if (user == null)

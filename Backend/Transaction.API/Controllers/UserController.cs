@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Transaction.Core.Dtos.Request;
 using Transaction.Core.Interfaces.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,6 +11,7 @@ namespace Transaction.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
+
 
         public UserController (IUserService userService)
         {
@@ -30,9 +32,9 @@ namespace Transaction.API.Controllers
 
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserById( int userId)
+        public async Task<IActionResult> GetUserById( int id)
         {
-            var result = await _userService.GetUserByIdAsync(userId);
+            var result = await _userService.GetUserByIdAsync(id);
             if (result.Success)
             {
                 return Ok(result);
@@ -42,9 +44,14 @@ namespace Transaction.API.Controllers
         }
         // POST api/<UserController>
         [HttpPost("register")]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CreateUSer([FromBody] RegisterRequestDto dto)
         {
-
+           var result = await _userService.CreateUserAsync(dto);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else return StatusCode(result.StatusCode, result);
         }
 
         [HttpPost("login")]
