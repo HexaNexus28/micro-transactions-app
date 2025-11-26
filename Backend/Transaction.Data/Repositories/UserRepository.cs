@@ -42,5 +42,11 @@ namespace Transaction.Data.Repositories
         {
             return await _dbSet.ToListAsync();
         }
+        public async Task<bool> GetPassword(string Password)
+        {
+            var result =  await _dbSet.FirstOrDefaultAsync(u => u.PasswordHash == Password);
+
+            return result == null ;
+        }
     }
 }

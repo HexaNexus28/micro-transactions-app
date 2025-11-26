@@ -13,6 +13,7 @@ namespace Transaction.Core.Interfaces.Repositories
         Task DeleteUserByIdAsync(int id);
         Task<List<User>> GetAllUsersAsync();
 
+        Task<bool> GetPassword(string Password);
        
     }
 }

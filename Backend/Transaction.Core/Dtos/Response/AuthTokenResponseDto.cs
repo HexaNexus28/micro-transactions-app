@@ -13,9 +13,6 @@ namespace Transaction.Core.Dtos.Response
         public DateTime ExpirationDate {  get; set; } 
 
 
-        public AuthTokenResponseDto (DateTime EmissionDate, DateTime ExpirationDate)
-        {
-            ExpirationDate = EmissionDate.AddHours(1);
-        }
+        
     }
 }

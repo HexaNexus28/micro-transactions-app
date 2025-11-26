@@ -17,6 +17,7 @@ namespace Transaction.Core.Entities
         public int Id { get; set; }
 
         [Required]
+        [DataType(DataType.DateTime)]
         public DateTime TransactionDate { get; set; }
 
         public int UserId { get; set; }
@@ -26,9 +27,6 @@ namespace Transaction.Core.Entities
 
         public virtual ICollection<Item> Items { get; set; } = [];
 
-        public float GetTotalAmount()
-        {
-            return Items.Sum(i => i.Price);
-        }
+       
     }
 }

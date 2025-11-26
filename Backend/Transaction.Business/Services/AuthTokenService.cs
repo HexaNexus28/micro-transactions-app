@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Transaction.Core.Dtos.Response;
 using Transaction.Core.DTOs.Response;
+using Transaction.Core.Entities;
 using Transaction.Core.Interfaces.Repositories;
 using Transaction.Core.Interfaces.Services;
 
@@ -22,6 +23,34 @@ namespace Transaction.Business.Services
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
+        public async Task<ApiResponse<bool>> CreateAuthTokenAsync()
+        {
+            try
+            {
+                var authTokendto = new AuthTokenResponseDto
+                {
+                    EmissionDate = DateTime.UtcNow,
+                    ExpirationDate = DateTime.UtcNow.AddHours(1)
+                };
+                var authToken = _mapper.Map<AuthToken>(authTokendto);
+
+                await _unitOfWork.AuthTokens.AddAsync(authToken);
+
+                await _unitOfWork.SaveChangesAsync();
+
+                return ApiResponse<bool>.SuccessResponse(true, $"AuthToken Created Successfully");
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"[CreateAuthTokenAsync ERROR] {ex.Message}\n{ex.StackTrace}");
+
+                return ApiResponse<bool>.ErrorResponse(
+                    $"An error occurred: {ex.Message}", 500);
+            }
+        
+    
+        }
         public async Task<ApiResponse<IEnumerable<AuthTokenResponseDto>>> GetAllAuthTokenAsync()
         {
             try

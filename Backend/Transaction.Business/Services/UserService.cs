@@ -58,6 +58,38 @@ namespace Transaction.Business.Services
             }
         }
 
+        public async Task<ApiResponse<bool>> LoginAsync(LoginRequestDto userdto)
+        {
+            try
+            {
+                if (userdto == null)
+                    return ApiResponse<bool>.ErrorResponse(
+                        "Invalid user ID", 400);
+
+                if (GetUserByEmailAsync(userdto.Email) != null)
+                {
+                    return ApiResponse<bool>.ErrorResponse(
+                                            "Email Not exist", 400);
+                }
+                var user = _mapper.Map<User>(userdto);
+                var result = await _unitOfWork.Users.GetPassword(userdto.Password);
+               
+                
+
+                return ApiResponse<bool>.SuccessResponse(
+                        true, $"Login successful");
+
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"[CreateUserAsync ERROR] {ex.Message}\n{ex.StackTrace}");
+
+                return ApiResponse<bool>.ErrorResponse(
+                    $"An error occurred: {ex.Message}", 500);
+            }
+
+        }
         public async Task<ApiResponse<UserResponseDto>> GetUserByIdAsync(int Id)
         {
             try
@@ -179,7 +211,7 @@ namespace Transaction.Business.Services
                 if (user == null)
                 {
                     return ApiResponse<UserResponseDto>.NotFoundResponse(
-                            $"Not Found AuthToken");
+                            $"Not Found User {Name}");
 
                 }
                 var userdto = _mapper.Map<UserResponseDto>(user);
@@ -229,6 +261,6 @@ namespace Transaction.Business.Services
 
             
 
-        }
+    }
     
 }

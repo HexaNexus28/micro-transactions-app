@@ -43,7 +43,7 @@ namespace Transaction.Business.Services
             {
 
                 return ApiResponse<IEnumerable<ItemResponseDto>>.ErrorResponse(
-                   "An error occurred while retrieving the authtoken", 500);
+                   "An error occurred while retrieving the item", 500);
             }
         }
         public async Task<ApiResponse<ItemResponseDto>> GetItemByIdAsync(int Id)
@@ -60,7 +60,7 @@ namespace Transaction.Business.Services
                 if (item == null)
                 {
                     return ApiResponse<ItemResponseDto>.NotFoundResponse(
-                            $"Not Found AuthToken");
+                            $"Not Found Item");
 
                 }
                 var Itemdto = _mapper.Map<ItemResponseDto>(item);

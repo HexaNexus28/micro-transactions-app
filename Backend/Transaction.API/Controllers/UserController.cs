@@ -44,7 +44,7 @@ namespace Transaction.API.Controllers
         }
         // POST api/<UserController>
         [HttpPost("register")]
-        public async Task<IActionResult> CreateUSer([FromBody] RegisterRequestDto dto)
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterRequestDto dto)
         {
            var result = await _userService.CreateUserAsync(dto);
             if (result.Success)
@@ -55,15 +55,24 @@ namespace Transaction.API.Controllers
         }
 
         [HttpPost("login")]
-        public void Posty([FromBody] string value)
+        public async Task<IActionResult> Login ([FromBody] LoginRequestDto dto)
         {
+            var result = await _userService.LoginAsync(dto) ;
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else return StatusCode(result.StatusCode, result);
         }
+
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
+
+
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]

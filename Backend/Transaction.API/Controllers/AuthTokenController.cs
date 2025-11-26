@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Transaction.Core.Interfaces.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,19 +9,34 @@ namespace Transaction.API.Controllers
     [ApiController]
     public class AuthTokenController : ControllerBase
     {
+        private readonly IAuthTokenService _authtokenService;
+
+
+        public AuthTokenController(IAuthTokenService authtokenService)
+        {
+            _authtokenService = authtokenService;
+        }
         // GET: api/<AuthTokenController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> GetAuthTokens()
         {
-            return new string[] { "value1", "value2" };
-        }
+            var result = await _authtokenService.GetAllAuthTokenAsync();
 
-        // GET api/<AuthTokenController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            else
+            {
+                return StatusCode(result.StatusCode, result);
+            }
         }
+                // GET api/<AuthTokenController>/5
+               [HttpGet("{id}")]
+                public string Get(int id)
+                {
+                    return "value";
+                }
 
         // POST api/<AuthTokenController>
         [HttpPost]

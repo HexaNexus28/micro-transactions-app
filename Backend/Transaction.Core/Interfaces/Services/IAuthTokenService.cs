@@ -13,5 +13,7 @@ namespace Transaction.Core.Interfaces.Services
         Task<ApiResponse<IEnumerable<AuthTokenResponseDto>>> GetAllAuthTokenAsync();
 
         Task<ApiResponse<IEnumerable<AuthTokenResponseDto>>> GetAuthTokenByUserIdAsync(int UserId);
+
+        Task<ApiResponse<bool>> CreateAuthTokenAsync();
     }
 }

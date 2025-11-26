@@ -9,8 +9,8 @@ namespace Transaction.Core.Dtos.Request
 {
     public class LoginRequestDto
     {
-        [Required(ErrorMessage = "Username or email is required")]
-        public string Username { get; set; } = string.Empty;
+        [Required(ErrorMessage = "Email is required")]
+        public string Email { get; set; } = string.Empty;
 
         /// <summary>
         /// Mot de passe

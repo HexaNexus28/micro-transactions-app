@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Transaction.Core.Dtos.Request;
 using Transaction.Core.Dtos.Response;
 using Transaction.Core.DTOs.Response;
 using Transaction.Core.Entities;
@@ -23,7 +24,43 @@ public class TransactService :ITransactService
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
-       public async Task<ApiResponse<IEnumerable<TransactResponseDto>>> GetAllTransactionsAsync()
+
+       public async Task<ApiResponse<bool>> CreateTransactionAsync(TransactRequestDto transactdto)
+        {
+            try
+            {
+                if (transactdto == null)
+                    return ApiResponse<bool>.ErrorResponse(
+                        "Invalid transact", 400);
+                if (transactdto.User == null)
+                    return ApiResponse<bool>.ErrorResponse(
+                        "Invalid User", 400);
+                if (!transactdto.Items.Any())
+                {
+                    return ApiResponse<bool>.ErrorResponse(
+                        "There is no Item Purchased", 400);
+                }
+                var transact = _mapper.Map<Transact>(transactdto);
+
+                var result = await _unitOfWork.Transacts.AddAsync(transact);
+                
+                await _unitOfWork.SaveChangesAsync();
+
+
+                return ApiResponse<bool>.SuccessResponse(true,$"Transaction {transact} created Successfully");
+
+
+            }
+            catch(Exception ex)
+            {
+
+                Console.WriteLine($"[CreateTransactionAsync ERROR] {ex.Message}\n{ex.StackTrace}");
+
+                return ApiResponse<bool>.ErrorResponse(
+                    $"An error occurred: {ex.Message}", 500);
+            }
+        }
+        public async Task<ApiResponse<IEnumerable<TransactResponseDto>>> GetAllTransactionsAsync()
         {
             try
             {

@@ -24,6 +24,8 @@ namespace Transaction.Core.Interfaces.Services
 
         Task<ApiResponse<UserResponseDto>> GetUserByEmailAsync (string  Email);
 
+        Task <ApiResponse<bool>> LoginAsync(LoginRequestDto userdto);
+
        
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 // Ajoutez cette directive using
 using Transaction.Business.Services;
+using Transaction.Core.Configuration;
 using Transaction.Core.Interfaces.Repositories;
 using Transaction.Core.Interfaces.Services;
 using Transaction.Core.Mapping;
