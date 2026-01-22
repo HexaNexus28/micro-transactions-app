@@ -57,7 +57,7 @@ namespace Transaction.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login ([FromBody] LoginRequestDto dto)
         {
-            var result = await _userService.LoginAsync(dto) ;
+            var result = await _userService.LoginWithTokenAsync(dto) ;
             if (result.Success)
             {
                 return Ok(result);

@@ -1,23 +1,51 @@
 using Microsoft.EntityFrameworkCore;
-
-
-// Ajoutez cette directive using
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using Transaction.Business.Services;
 using Transaction.Core.Configuration;
 using Transaction.Core.Interfaces.Repositories;
 using Transaction.Core.Interfaces.Services;
 using Transaction.Core.Mapping;
+using Transaction.Core.Services;
 using Transaction.Data.Context;
 using Transaction.Data.Repositories;
 using Transaction.Data.UnitOfWork;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configuration JWT
+var jwtSettings = new JwtSettings();
+builder.Configuration.GetSection("JwtSettings").Bind(jwtSettings);
+builder.Services.AddSingleton(jwtSettings);
+
+// Configuration JWT Authentication
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtSettings.Issuer,
+        ValidAudience = jwtSettings.Audience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.SecretKey))
+    };
+});
+
+// Database Context
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection"),
-       b => b.MigrationsAssembly("Transaction.API")));
+        b => b.MigrationsAssembly("Transaction.API")));
 
-// Injection des dépendances - Repositories
+// Injection des dÃ©pendances - Repositories
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthTokenRepository, AuthTokenRepository>();
@@ -25,21 +53,20 @@ builder.Services.AddScoped<ITransactRepository, TransactRepository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-// Injection des dépendances - Services
+// Injection des dÃ©pendances - Services
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthTokenService, AuthTokenService>();
 builder.Services.AddScoped<ITransactService, TransactService>();
 builder.Services.AddScoped<IItemService, ItemService>();
+builder.Services.AddScoped<IJwtService, JwtService>();
 
 // Configuration AutoMapper
-
 builder.Services.AddAutoMapper(
     typeof(Program).Assembly,
     typeof(UserMappingProfile).Assembly,
-      typeof(AuthTokenMappingProfile).Assembly,
-      typeof(TransactMappingProfile).Assembly,
-      typeof(ItemMappingProfile).Assembly
-
+    typeof(AuthTokenMappingProfile).Assembly,
+    typeof(TransactMappingProfile).Assembly,
+    typeof(ItemMappingProfile).Assembly
 );
 
 // Configuration des Controllers
@@ -53,27 +80,47 @@ builder.Services.AddSwaggerGen(c =>
     {
         Title = "Transaction API",
         Version = "v1",
-        Description = "API pour la gestion des transactions"
-
+        Description = "API pour la gestion des transactions avec JWT"
+    });
+    
+    // Configuration JWT dans Swagger
+    c.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+        Type = Microsoft.OpenApi.Models.SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    
+    c.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
     });
 });
-// Add services to the container.
-// CORS (permettre toutes les origines en développement)
+
+// CORS (permettre toutes les origins en dÃ©veloppement)
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("DevelopmentPolicy",
-        builder =>
-        {
-            builder.AllowAnyOrigin()
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
+    options.AddPolicy("DevelopmentPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
 });
 
 builder.Services.AddHealthChecks();
-
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 var app = builder.Build();
 
@@ -87,6 +134,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Authentication & Authorization
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

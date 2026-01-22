@@ -5,12 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using Transaction.Core.Configuration;
 using Transaction.Core.Dtos.Request;
 using Transaction.Core.Dtos.Response;
 using Transaction.Core.DTOs.Response;
 using Transaction.Core.Entities;
 using Transaction.Core.Interfaces.Repositories;
 using Transaction.Core.Interfaces.Services;
+using Transaction.Core.Services;
 
 namespace Transaction.Business.Services
 {
@@ -19,11 +21,13 @@ namespace Transaction.Business.Services
 
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private readonly IJwtService _jwtService;
 
-        public UserService(IUnitOfWork unitOfWork, IMapper mapper)
+        public UserService(IUnitOfWork unitOfWork, IMapper mapper, IJwtService jwtService)
         {
             _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _jwtService = jwtService ?? throw new ArgumentNullException(nameof(jwtService));
         }
 
        public async Task<ApiResponse<bool>> CreateUserAsync(RegisterRequestDto userdto)
@@ -58,37 +62,32 @@ namespace Transaction.Business.Services
             }
         }
 
-        public async Task<ApiResponse<bool>> LoginAsync(LoginRequestDto userdto)
+        public async Task<ApiResponse<UserResponseDto>> LoginAsync(LoginRequestDto userdto)
         {
             try
             {
                 if (userdto == null)
-                    return ApiResponse<bool>.ErrorResponse(
-                        "Invalid user ID", 400);
+                    return ApiResponse<UserResponseDto>.ErrorResponse(
+                        "Invalid login data", 400);
 
-                if (GetUserByEmailAsync(userdto.Email) != null)
-                {
-                    return ApiResponse<bool>.ErrorResponse(
-                                            "Email Not exist", 400);
-                }
-                var user = _mapper.Map<User>(userdto);
-                var result = await _unitOfWork.Users.GetPassword(userdto.Password);
-               
+                var user = (await _unitOfWork.Users.FindAsync(u => u.Email == userdto.Email)).FirstOrDefault();
                 
+                if (user == null)
+                    return ApiResponse<UserResponseDto>.ErrorResponse("User not found", 404);
 
-                return ApiResponse<bool>.SuccessResponse(
-                        true, $"Login successful");
+                // Vérifier le mot de passe (simplifié, utiliser BCrypt en production)
+                if (user.PasswordHash != userdto.Password)
+                    return ApiResponse<UserResponseDto>.ErrorResponse("Invalid password", 401);
 
+                var userDto = _mapper.Map<UserResponseDto>(user);
+                return ApiResponse<UserResponseDto>.SuccessResponse(userDto, "Login successful");
             }
             catch (Exception ex)
             {
-
-                Console.WriteLine($"[CreateUserAsync ERROR] {ex.Message}\n{ex.StackTrace}");
-
-                return ApiResponse<bool>.ErrorResponse(
+                Console.WriteLine($"[LoginAsync ERROR] {ex.Message}\n{ex.StackTrace}");
+                return ApiResponse<UserResponseDto>.ErrorResponse(
                     $"An error occurred: {ex.Message}", 500);
             }
-
         }
         public async Task<ApiResponse<UserResponseDto>> GetUserByIdAsync(int Id)
         {
@@ -259,7 +258,35 @@ namespace Transaction.Business.Services
             }
         }
 
-            
+        public async Task<ApiResponse<UserResponseDto>> LoginWithTokenAsync(LoginRequestDto loginDto)
+        {
+            try
+            {
+                if (loginDto == null)
+                    return ApiResponse<UserResponseDto>.ErrorResponse("Invalid login data", 400);
+
+                var user = (await _unitOfWork.Users.FindAsync(u => u.Email == loginDto.Email)).FirstOrDefault();
+                
+                if (user == null)
+                    return ApiResponse<UserResponseDto>.ErrorResponse("User not found", 404);
+
+                // Vérifier le mot de passe (à adapter avec hashage)
+                if (user.PasswordHash != loginDto.Password) // Simplifié, utiliser BCrypt en production
+                    return ApiResponse<UserResponseDto>.ErrorResponse("Invalid password", 401);
+
+                var token = _jwtService.GenerateToken(user);
+                var userDto = _mapper.Map<UserResponseDto>(user);
+                
+                // Ajouter le token à la réponse
+                userDto.Token = token;
+
+                return ApiResponse<UserResponseDto>.SuccessResponse(userDto, "Login successful");
+            }
+            catch (Exception)
+            {
+                return ApiResponse<UserResponseDto>.ErrorResponse("An error occurred during login", 500);
+            }
+        }
 
     }
     

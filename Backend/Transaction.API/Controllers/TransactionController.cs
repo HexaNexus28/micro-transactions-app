@@ -13,7 +13,12 @@ namespace Transaction.API.Controllers
     {
         private readonly IAuthTokenService _authtokenService;
         private readonly ITransactService _transactService;
-        // GET: api/<TransactionController>
+
+        public TransactionController(IAuthTokenService authtokenService, ITransactService transactService)
+        {
+            _authtokenService = authtokenService;
+            _transactService = transactService;
+        }
         [HttpGet]
         public async Task<IActionResult> GetTransactions()
         {
