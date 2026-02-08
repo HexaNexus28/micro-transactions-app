@@ -11,12 +11,14 @@ import {
     ApiResponse
 } from '../types';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5037/api';
+
 class ApiService {
     private api: AxiosInstance;
 
     constructor() {
         this.api = axios.create({
-            baseURL: 'http://localhost:5037/api',
+            baseURL: API_BASE_URL,
             timeout: 10000,
             headers: {
                 'Content-Type': 'application/json',
